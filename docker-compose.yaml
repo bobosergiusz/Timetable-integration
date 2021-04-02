@@ -37,7 +37,7 @@ services:
       - PYTHONDONTWRITEBYTECODE=1
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=PathPrefix(`/appointment`, `/service`, `/login`, `/user`)"
+      - "traefik.http.routers.backend.rule=PathPrefix(`/appointment`, `/service`, `/login`, `/logout`, `/user`)"
       - "traefik.http.routers.backend.entrypoints=web"
       - "traefik.http.services.backend.loadbalancer.server.port=80"
 
