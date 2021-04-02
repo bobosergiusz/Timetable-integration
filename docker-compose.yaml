@@ -1,5 +1,5 @@
 version: "3.9"
-   
+
 services:
   proxy:
     image: "traefik:v2.4"
@@ -13,7 +13,6 @@ services:
       - "8080:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-
 
   web-frontend:
     build:
@@ -38,7 +37,7 @@ services:
       - PYTHONDONTWRITEBYTECODE=1
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=PathPrefix(`/appointment`)"
+      - "traefik.http.routers.backend.rule=PathPrefix(`/appointment`, `/service`, `/login`, `/user`)"
       - "traefik.http.routers.backend.entrypoints=web"
       - "traefik.http.services.backend.loadbalancer.server.port=80"
 
